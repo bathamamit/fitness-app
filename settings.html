@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Integrated Fitness Tracker</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <main class="settings-container">
+    <header class="settings-header">
+      <h1>Nutritional Tracker Settings (ID 103)</h1>
+      <p>यहाँ अपने न्यूट्रिएंट्स के लक्ष्य और मिनिमम/मैक्सिमम वैल्यू सेट करें।</p>
+    </header>
+
+    <section class="card">
+      <h2>नया न्यूट्रिएंट जोड़ें</h2>
+      <form id="nutrient-form">
+        <div class="form-group">
+          <label for="nutrient-name">न्यूट्रिएंट का नाम</label>
+          <input type="text" id="nutrient-name" placeholder="उदा. Creatine, Vitamin C" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="min-val">वर्तमान वैल्यू</label>
+            <input type="number" id="min-val" placeholder="0" min="0" step="any" required>
+          </div>
+          <div class="form-group">
+            <label for="max-val">टारगेट वैल्यू</label>
+            <input type="number" id="max-val" placeholder="100" min="1" step="any" required>
+          </div>
+          <div class="form-group">
+            <label for="unit">यूनिट</label>
+            <input type="text" id="unit" placeholder="g, mg, mcg" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="color-code">प्रोग्रेस कलर</label>
+          <input type="color" id="color-code" value="#4CAF50">
+        </div>
+
+        <button type="submit" class="btn-primary">न्यूट्रिएंट सेव करें</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>एक्टिव न्यूट्रिएंट्स लिस्ट</h2>
+      <ul id="tracker-list" class="tracker-list"></ul>
+    </section>
+
+    <div class="actions">
+      <a href="index.html" class="btn-secondary">← डैशबोर्ड पर वापस जाएं</a>
+    </div>
+  </main>
+
+  <script src="settings.js"></script>
+</body>
+</html>

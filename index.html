@@ -1,0 +1,166 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness & Nutrition Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Chart.js for Donut Chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- LEFT SIDEBAR NAVIGATION -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <i class="fa-solid fa-heart-pulse"></i>
+      </div>
+      <nav class="nav-menu">
+        <button class="nav-btn active" id="btnHome" type="button">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-btn" id="btnProgress" type="button">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Progress</span>
+        </button>
+        <button class="nav-btn" id="btnDailyTasks" type="button">
+          <i class="fa-solid fa-person-biking"></i>
+          <span>Daily Tasks</span>
+        </button>
+        <button class="nav-btn" id="btnSettings" type="button">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+      
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="header-title">
+          <h1>FITNESS & NUTRITION TRACKER</h1>
+          <p class="subtitle">Today's Overview - <span id="currentDate"></span></p>
+        </div>
+        
+        <div class="user-profile">
+          <span class="user-name">Amit</span>
+          <img src="user-avatar.png" alt="User Profile" class="avatar">
+        </div>
+      </header>
+
+      <!-- DASHBOARD CONTENT -->
+      <section class="dashboard-body">
+        
+        <!-- CENTER / MAIN DONUT CHART SECTION -->
+        <div class="chart-section card">
+          <div class="chart-container">
+            <canvas id="nutritionChart"></canvas>
+            <div class="chart-center-text">
+              <span class="daily-total-label">DAILY TOTAL</span>
+              <span class="chart-percentage" id="chartTotalPercent">85%</span>
+              <span class="chart-goal-label">GOAL: 100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRACKER CARDS (HORIZONTAL GRID / RIGHT ALIGNED) -->
+        <div class="tracker-cards-container">
+          
+          <div class="tracker-card card-green">
+            <div class="card-header">
+              <span class="badge green-badge">A</span>
+              <h3>Calorie Tracker</h3>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill green-fill" id="calorieFill" style="width: 80%;"></div>
+            </div>
+            <div class="card-footer">
+              <span id="calorieDetail">700 / 800 kcal</span>
+              <span id="caloriePercent">88%</span>
+            </div>
+          </div>
+
+          <div class="tracker-card card-blue">
+            <div class="card-header">
+              <span class="badge blue-badge">B</span>
+              <h3>Proteins</h3>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill blue-fill" style="width: 69%;"></div>
+            </div>
+            <div class="card-footer">
+              <span>55g / 80g</span>
+              <span>69%</span>
+            </div>
+          </div>
+
+          <div class="tracker-card card-orange">
+            <div class="card-header">
+              <span class="badge orange-badge">C</span>
+              <h3>Carbs</h3>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill orange-fill" style="width: 75%;"></div>
+            </div>
+            <div class="card-footer">
+              <span>150g / 200g</span>
+              <span>75%</span>
+            </div>
+          </div>
+
+          <div class="tracker-card card-yellow">
+            <div class="card-header">
+              <span class="badge yellow-badge">D</span>
+              <h3>Fats</h3>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill yellow-fill" style="width: 30%;"></div>
+            </div>
+            <div class="card-footer">
+              <span>20g / 60g</span>
+              <span>30%</span>
+            </div>
+          </div>
+
+          <div class="tracker-card card-purple water-tracker-card" id="waterTracker">
+            <div class="card-header">
+              <span class="badge purple-badge"><i class="fa-solid fa-droplet" aria-hidden="true"></i></span>
+              <h3>Water</h3>
+            </div>
+            <div class="water-progress-heading">
+              <span id="waterPercentage" class="water-percentage">0%</span>
+              <span id="waterStatus" class="status-tag status-started">Getting Started</span>
+            </div>
+            <div class="progress-bar-bg water-progress-track" role="progressbar" aria-label="Water goal completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="waterProgressFill" class="progress-bar-fill purple-fill" style="width: 0%;"></div>
+            </div>
+            <div class="card-footer water-summary">
+              <span id="waterCompleted">0/10 Completed</span>
+              <span>Daily goal</span>
+            </div>
+            <div class="water-actions">
+              <button id="addWaterButton" class="water-action primary-action" type="button">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                +10% Water
+              </button>
+              <button id="resetWaterButton" class="water-action secondary-action" type="button">Reset</button>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="javascript.js"></script>
+</body>
+</html>
